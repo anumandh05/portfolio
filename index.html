@@ -169,7 +169,6 @@
 
                 <!-- Intro Summary Paragraph -->
                 <p class="text-slate-400 text-base sm:text-lg max-w-3xl mb-10 leading-relaxed">
-                    
                     Bridging core hardware engineering with software development. Passionate about <strong class="text-slate-200">ESP32 IoT systems, Embedded C, Java, Data Structures & Algorithms</strong>, and scalable web solutions using modern databases and REST APIs.
                 </p>
 
@@ -340,7 +339,7 @@
                     <div class="h-[1px] bg-dark-700 flex-grow max-w-xs"></div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Project 1: Smart Aqua -->
                     <div class="bg-dark-850 rounded-xl border-glow-card p-6 flex flex-col justify-between">
                         <div>
@@ -369,7 +368,91 @@
                         </div>
                     </div>
 
-                    <!-- Project 2: Language Translational System -->
+                    <!-- Project 2: Fire & Smoke Detection (NEW ADDITION 1) -->
+                    <div class="bg-dark-850 rounded-xl border-glow-card p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center text-lg">
+                                    <i class="fa-solid fa-fire-flame-curved"></i>
+                                </div>
+                                <span class="px-2.5 py-1 rounded bg-red-500/10 text-red-400 text-xs font-mono border border-red-500/30">Safety IoT</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Smart IoT Fire & Smoke Detection System</h3>
+                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+                                Built an ESP32 embedded safety system using flame and MQ smoke sensors for continuous environmental monitoring, featuring low-latency mobile alert generation and automatic notification triggers.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                <span class="px-2 py-0.5 rounded bg-dark-900 text-slate-300 text-xs font-mono">ESP32</span>
+                                <span class="px-2 py-0.5 rounded bg-dark-900 text-slate-300 text-xs font-mono">MQ Sensors</span>
+                                <span class="px-2 py-0.5 rounded bg-dark-900 text-slate-300 text-xs font-mono">Blynk Telemetry</span>
+                                <span class="px-2 py-0.5 rounded bg-dark-900 text-slate-300 text-xs font-mono">Embedded C</span>
+                            </div>
+                            <button onclick="openProjectModal('firedetect')" class="w-full py-2.5 rounded-lg bg-dark-800 hover:bg-dark-700 text-slate-200 text-xs font-mono transition-colors border border-dark-700 flex items-center justify-center gap-2">
+                                <span>Inspect Architecture</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: VLSI Transistor ALU (NEW ADDITION 2) -->
+                    <div class="bg-dark-850 rounded-xl border-glow-card p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center text-lg">
+                                    <i class="fa-solid fa-microchip"></i>
+                                </div>
+                                <span class="px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 text-xs font-mono border border-amber-500/30">VLSI & IC Design</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">4-Operation Transistor-Level ALU Design</h3>
+                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+                                Designed a 608-transistor 4-operation ALU in Cadence Virtuoso capable of Addition, Subtraction, 2-Bit Multiplication, and Parity Generation with transient output waveform verification.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                <span class="px-2 py-0.5 rounded bg-dark-900 text-slate-300 text-xs font-mono">Cadence Virtuoso</span>
+                                <span class="px-2 py-0.5 rounded bg-dark-900 text-slate-300 text-xs font-mono">CMOS Logic</span>
+                                <span class="px-2 py-0.5 rounded bg-dark-900 text-slate-300 text-xs font-mono">Spectre Sim</span>
+                                <span class="px-2 py-0.5 rounded bg-dark-900 text-slate-300 text-xs font-mono">gpdk090</span>
+                            </div>
+                            <button onclick="openProjectModal('vlsi_alu')" class="w-full py-2.5 rounded-lg bg-dark-800 hover:bg-dark-700 text-slate-200 text-xs font-mono transition-colors border border-dark-700 flex items-center justify-center gap-2">
+                                <span>Inspect Architecture</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Smart ICU Ventilation (NEW ADDITION 3) -->
+                    <div class="bg-dark-850 rounded-xl border-glow-card p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg">
+                                    <i class="fa-solid fa-fan"></i>
+                                </div>
+                                <span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 text-xs font-mono border border-emerald-500/30">Control Systems</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Smart ICU Ventilation Control System</h3>
+                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+                                Architected an IoT & AI-integrated ventilation control system that calculates an Infection Risk Index (IRI) from multi-sensor data to dynamically modulate fan speeds via dynamic PID-Fuzzy logic.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                <span class="px-2 py-0.5 rounded bg-dark-900 text-slate-300 text-xs font-mono">ESP32</span>
+                                <span class="px-2 py-0.5 rounded bg-dark-900 text-slate-300 text-xs font-mono">PID + Fuzzy</span>
+                                <span class="px-2 py-0.5 rounded bg-dark-900 text-slate-300 text-xs font-mono">CO2/DHT Sensors</span>
+                                <span class="px-2 py-0.5 rounded bg-dark-900 text-slate-300 text-xs font-mono">PWM Control</span>
+                            </div>
+                            <button onclick="openProjectModal('icu_vent')" class="w-full py-2.5 rounded-lg bg-dark-800 hover:bg-dark-700 text-slate-200 text-xs font-mono transition-colors border border-dark-700 flex items-center justify-center gap-2">
+                                <span>Inspect Architecture</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project 5: Language Translational System -->
                     <div class="bg-dark-850 rounded-xl border-glow-card p-6 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between mb-4">
@@ -397,7 +480,7 @@
                         </div>
                     </div>
 
-                    <!-- Project 3: Ticket Verse -->
+                    <!-- Project 6: Ticket Verse -->
                     <div class="bg-dark-850 rounded-xl border-glow-card p-6 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between mb-4">
@@ -672,7 +755,7 @@
 
                         <div id="form-alert" class="hidden mt-4 p-4 rounded-lg bg-neon-cyan/10 border border-neon-cyan/40 text-neon-cyan text-xs font-mono text-center flex items-center justify-center gap-2">
                             <i class="fa-solid fa-circle-check text-sm"></i>
-                            <span>Thank you Anumandh received your message! He will respond shortly.</span>
+                            <span>Thank you! Anumandh received your message and will respond shortly.</span>
                         </div>
                     </div>
                 </div>
@@ -689,7 +772,7 @@
             <div class="flex items-center space-x-5 text-slate-400">
                 <a href="https://github.com/anumandh05" target="_blank" rel="noopener noreferrer" class="hover:text-neon-cyan transition-colors">GitHub</a>
                 <a href="https://www.linkedin.com/in/anumandh/" target="_blank" rel="noopener noreferrer" class="hover:text-neon-cyan transition-colors">LinkedIn</a>
-                <a href="https://leetcode.com/anumandh05" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors">LeetCode</a>
+                <a href="https://leetcode.com/u/anumandh05/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors">LeetCode</a>
                 <a href="mailto:anumandhattn69@gmail.com" class="hover:text-neon-cyan transition-colors">Email</a>
             </div>
             <div>
@@ -730,7 +813,7 @@
         }
         document.getElementById('mobile-menu-btn').addEventListener('click', toggleMenu);
 
-        // Project Modal Contents
+        // Extended Project Modal Details
         const projectDetails = {
             aqua: {
                 title: "Smart Aqua IoT Based Water Monitoring System",
@@ -741,6 +824,39 @@
                     "Interfaced multiple analog and digital sensors with ESP32 microcontroller ADC pins.",
                     "Configured Wi-Fi telemetry to stream real-time sensor metrics directly into Firebase.",
                     "Designed automated buzzer and LCD alert rules whenever water quality parameters breach safety standards."
+                ]
+            },
+            firedetect: {
+                title: "Smart IoT Fire & Smoke Detection System",
+                domain: "Safety Systems & Real-Time IoT",
+                summary: "Developed an ESP32-based embedded safety system using smoke and flame sensors for continuous environmental risk monitoring and immediate real-time mobile notifications.",
+                tech: ["ESP32", "MQ Smoke Sensor", "IR Flame Sensor", "Embedded C", "Blynk IoT / Telemetry"],
+                keypoints: [
+                    "Implemented low-latency sensor interfacing for instant real-time flame and smoke event detection.",
+                    "Configured wireless IoT telemetry to push instant alert notifications to mobile devices upon threshold breach.",
+                    "Engineered and validated a low-cost, compact prototype designed for automated fire and environmental safety monitoring."
+                ]
+            },
+            vlsi_alu: {
+                title: "4-Operation Transistor-Level ALU Design",
+                domain: "VLSI Architecture & Cadence IC Design",
+                summary: "Architected a custom 4-operation Arithmetic Logic Unit (ALU) using 608 CMOS transistors in Cadence Virtuoso, supporting 4-bit addition, subtraction, 2-bit multiplication, and parity generation.",
+                tech: ["Cadence Virtuoso", "Spectre Simulator", "90nm CMOS (gpdk090)", "Analog Schematic", "Transient Simulation"],
+                keypoints: [
+                    "Engineered custom transistor schematics for CMOS logic gates, Ripple Carry Adders, 2-bit Multipliers, and 4x1 MUXs.",
+                    "Calculated total transistor counts accurately (Add/Sub: 240, Multiplier: 64, Parity: 112, MUXs: 184; Total = 608 transistors).",
+                    "Simulated full signal transient waveforms in Spectre to verify logic outputs against binary and decimal expectations."
+                ]
+            },
+            icu_vent: {
+                title: "Smart ICU Ventilation Control System",
+                domain: "IoT, Control Systems & Healthcare AI",
+                summary: "Engineered an intelligent, energy-efficient ventilation control system for ICUs that calculates a real-time Infection Risk Index (IRI) from multi-sensor data to adaptively control airflow.",
+                tech: ["ESP32", "PID Controller", "Fuzzy Logic Modulation", "CO2 & DHT Sensors", "PWM Fan Speed Control"],
+                keypoints: [
+                    "Fused CO2 concentration, humidity, temperature, and PIR occupancy data into a calculated Infection Risk Index (IRI).",
+                    "Implemented a hybrid PID and Fuzzy Logic controller to modulate ventilation fans dynamically based on real-time IRI.",
+                    "Achieved up to 35% energy reduction compared to static HVAC setups while significantly mitigating airborne particulate risks."
                 ]
             },
             translate: {
