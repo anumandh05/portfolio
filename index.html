@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anumandh - Portfolio </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            950: '#060911',
+                            900: '#0a0e17',
+                            850: '#101624',
+                            800: '#131a29',
+                            700: '#1d273d',
+                            600: '#2b3957'
+                        },
+                        neon: {
+                            cyan: '#00f3ff',
+                            green: '#00ff9d',
+                            purple: '#a855f7'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Circuit & Hardware Grid Pattern Background */
+        .bg-circuit-pattern {
+            background-size: 36px 36px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+        }
+
+        /* Neon Glow Effects */
+        .glow-cyan {
+            box-shadow: 0 0 25px -5px rgba(0, 243, 255, 0.3);
+        }
+        .glow-green {
+            box-shadow: 0 0 25px -5px rgba(0, 255, 157, 0.3);
+        }
+        .text-glow-cyan {
+            text-shadow: 0 0 12px rgba(0, 243, 255, 0.5);
+        }
+
+        /* Border Glow Hover Transition */
+        .border-glow-card {
+            border: 1px solid rgba(29, 39, 61, 0.8);
+            transition: all 0.3s ease;
+        }
+        .border-glow-card:hover {
+            border-color: rgba(0, 243, 255, 0.5);
+            box-shadow: 0 0 20px -5px rgba(0, 243, 255, 0.25);
+            transform: translateY(-3px);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0e17;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #131a29;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f3ff;
+        }
+    </style>
+</head>
+<body class="bg-dark-900 text-slate-100 font-sans antialiased selection:bg-neon-cyan selection:text-dark-950 bg-circuit-pattern min-h-screen flex flex-col justify-between">
+
+    <!-- HEADER & NAVIGATION -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-dark-950/85 border-b border-dark-700/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand Logo / Circuit Node -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-9 h-9 rounded-lg bg-dark-800 border border-neon-cyan/40 flex items-center justify-center text-neon-cyan font-mono font-bold text-base group-hover:border-neon-cyan group-hover:shadow-[0_0_15px_rgba(0,243,255,0.4)] transition-all">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <span class="font-mono font-bold text-slate-100 text-base sm:text-lg group-hover:text-neon-cyan transition-colors">
+                        Anumandh<span class="text-neon-cyan"></span>
+                    </span>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex space-x-7 text-xs font-mono text-slate-300">
+                    <a href="https://drive.google.com/file/d/1F3iBkCvyEWACgeaYA_6KTUkl5-GWmwxj/view?usp=drive_link" target="_blank" class="px-3.5 py-1.5 rounded-md border border-neon-cyan text-neon-cyan hover:bg-neon-cyan/10 transition-all font-semibold flex items-center gap-1.5">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        <span>Resume</span>
+                    </a>
+                    <a href="#about" class="hover:text-neon-cyan transition-colors py-1"><span class="text-neon-cyan"></span> About</a>
+                    <a href="#skills" class="hover:text-neon-cyan transition-colors py-1"><span class="text-neon-cyan"></span> Skills</a>
+                    <a href="#projects" class="hover:text-neon-cyan transition-colors py-1"><span class="text-neon-cyan"></span> Projects</a>
+                    <a href="#experience" class="hover:text-neon-cyan transition-colors py-1"><span class="text-neon-cyan"></span> Experience</a>
+                    <a href="#achievements" class="hover:text-neon-cyan transition-colors py-1"><span class="text-neon-cyan"></span> Achievements</a>
+                    <a href="#contact" class="hover:text-neon-cyan transition-colors py-1"><span class="text-neon-cyan"></span> Contact</a>
+                </nav>
+
+                <!-- Mobile Navigation Toggle -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="p-2 rounded-md text-slate-400 hover:text-white hover:bg-dark-800 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-950 border-b border-dark-700 px-4 pt-3 pb-6 space-y-3 font-mono text-sm">
+            <a href="https://drive.google.com/file/d/1F3iBkCvyEWACgeaYA_6KTUkl5-GWmwxj/view?usp=drive_link" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 mt-2 rounded border border-neon-cyan text-neon-cyan hover:bg-neon-cyan/10 transition-colors ">
+                <i class="fa-solid fa-file-pdf"></i>
+                <span>Resume</span>
+            </a>
+            <a href="#about" class="block py-2 text-slate-300 hover:text-neon-cyan" onclick="toggleMenu()"><span class="text-neon-cyan"></span> About</a>
+            <a href="#skills" class="block py-2 text-slate-300 hover:text-neon-cyan" onclick="toggleMenu()"><span class="text-neon-cyan"></span> Skills</a>
+            <a href="#projects" class="block py-2 text-slate-300 hover:text-neon-cyan" onclick="toggleMenu()"><span class="text-neon-cyan"></span> Projects</a>
+            <a href="#experience" class="block py-2 text-slate-300 hover:text-neon-cyan" onclick="toggleMenu()"><span class="text-neon-cyan"></span> Experience</a>
+            <a href="#achievements" class="block py-2 text-slate-300 hover:text-neon-cyan" onclick="toggleMenu()"><span class="text-neon-cyan"></span> Achievements</a>
+            <a href="#contact" class="block py-2 text-slate-300 hover:text-neon-cyan" onclick="toggleMenu()"><span class="text-neon-cyan"></span> Contact</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- HERO SECTION -->
+        <section class="relative min-h-[88vh] flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+            <!-- Neon Decorative Backdrops -->
+            <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[28rem] h-[28rem] bg-neon-cyan/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute bottom-10 right-10 w-72 h-72 bg-neon-green/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-5xl mx-auto w-full relative z-10">
+                <!-- Status Badge -->
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-dark-800/90 border border-neon-cyan/30 text-xs font-mono text-neon-cyan mb-6 backdrop-blur-sm">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-cyan opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-neon-cyan"></span>
+                    </span>
+                    VIT Vellore B.Tech Electronics and Communication Engineering
+                </div>
+
+                <!-- Main Name Header -->
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight mb-4">
+                    Anumandh <span class="bg-gradient-to-r from-neon-cyan via-cyan-300 to-neon-green bg-clip-text text-transparent text-glow-cyan">N</span>
+                </h1>
+
+                <!-- Subheading -->
+                <h2 class="text-xl sm:text-2xl font-mono text-slate-300 font-semibold mb-6">
+                    Electronics & Communication Engineer | <span class="text-neon-cyan">Embedded Firmware Engineer</span> & <span class="text-neon-green">Problem Solver</span>
+                </h2>
+
+                <!-- Intro Summary Paragraph -->
+                <p class="text-slate-400 text-base sm:text-lg max-w-3xl mb-10 leading-relaxed">
+                    
+                    Bridging core hardware engineering with software development. Passionate about <strong class="text-slate-200">ESP32 IoT systems, Embedded C, Java, Data Structures & Algorithms</strong>, and scalable web solutions using modern databases and REST APIs.
+                </p>
+
+                <!-- Action Buttons & Quick Profile Badges -->
+                <div class="flex flex-wrap items-center gap-4">
+                    <a href="#projects" class="px-7 py-3 rounded-lg bg-gradient-to-r from-neon-cyan to-cyan-400 text-dark-950 font-bold text-sm hover:shadow-[0_0_20px_rgba(0,243,255,0.4)] transition-all duration-300 flex items-center gap-2">
+                        <span>View Projects</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                    <a href="#contact" class="px-7 py-3 rounded-lg bg-dark-800 hover:bg-dark-700 text-slate-200 font-semibold text-sm border border-dark-700 hover:border-neon-cyan/50 transition-all duration-300 flex items-center gap-2">
+                        <span>Contact Me</span>
+                        <i class="fa-regular fa-paper-plane text-xs"></i>
+                    </a>
+
+                    <!-- Social / External Profile Badges -->
+                    <div class="flex items-center gap-3 pt-4 sm:pt-0 border-t sm:border-t-0 border-dark-800 w-full sm:w-auto justify-start">
+                        <a href="https://github.com/anumandh05" target="_blank" rel="noopener noreferrer" title="GitHub Profile" class="w-10 h-10 rounded-lg bg-dark-850 hover:bg-dark-800 border border-dark-700 hover:border-neon-cyan text-slate-300 hover:text-neon-cyan flex items-center justify-center transition-all">
+                            <i class="fa-brands fa-github text-lg"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/anumandh/" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile" class="w-10 h-10 rounded-lg bg-dark-850 hover:bg-dark-800 border border-dark-700 hover:border-neon-cyan text-slate-300 hover:text-neon-cyan flex items-center justify-center transition-all">
+                            <i class="fa-brands fa-linkedin-in text-lg"></i>
+                        </a>
+                        <a href="https://leetcode.com/u/anumandh05/" target="_blank" rel="noopener noreferrer" title="LeetCode Profile" class="px-3 h-10 rounded-lg bg-dark-850 hover:bg-dark-800 border border-dark-700 hover:border-amber-400 text-amber-400 font-mono text-xs font-bold flex items-center gap-2 transition-all">
+                            <i class="fa-solid fa-code"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT ME SECTION -->
+        <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-dark-700/60 bg-dark-950/40">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex items-center gap-4 mb-12">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
+                        <span class="text-neon-cyan font-mono text-xl"></span> About Me
+                    </h2>
+                    <div class="h-[1px] bg-dark-700 flex-grow max-w-xs"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                    <div class="lg:col-span-7 space-y-4 text-slate-300 leading-relaxed text-sm sm:text-base">
+                        <p>
+                            I am a <strong class="text-white">B.Tech Electronics and Communication Engineering</strong> student at <strong class="text-neon-cyan">Vellore Institute of Technology (VIT Vellore)</strong> maintaining a CGPA of <strong class="text-white">8.59 / 10</strong>. I am honored to be a recipient of the prestigious <strong class="text-neon-green">100% STARS Scholarship</strong> awarded by VIT.
+                        </p>
+                        <p>
+                            My core technical strength lies at the intersection of <strong class="text-white">Hardware Engineering & IT Software Development</strong>. I excel in microcontroller programming (ESP32, 8051), IoT sensor integration, and digital/analog system design while maintaining strong software development foundations in Java, C++, DSA, Object-Oriented Programming, and Database Management (MySQL).
+                        </p>
+                        <p>
+                            Having solved over <span class="text-amber-400 font-mono font-semibold">450+ problems on LeetCode</span> and qualified for the competitive <span class="text-neon-cyan font-mono font-semibold">VIT Top Coder Examination</span>, I bring rigorous analytical problem-solving and debugging skills to both embedded firmware and software development.
+                        </p>
+
+                        <!-- Quick Feature Pills -->
+                        <div class="grid grid-cols-2 gap-3 pt-3 font-mono text-xs text-slate-400">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-microchip text-neon-cyan"></i>
+                                <span>Embedded & IoT Systems</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-layer-group text-neon-cyan"></i>
+                                <span>Digital Electronics</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-code text-neon-green"></i>
+                                <span>DSA & Competitive Coding</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-database text-neon-green"></i>
+                                <span>DBMS (MySQL)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TECHNICAL SKILLS SECTION -->
+        <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-dark-700/60">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex items-center gap-4 mb-12">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
+                        <span class="text-neon-cyan font-mono text-xl"></span> Technical Skills & Stack
+                    </h2>
+                    <div class="h-[1px] bg-dark-700 flex-grow max-w-xs"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Skills Group 1: Hardware & Embedded -->
+                    <div class="bg-dark-850 p-6 rounded-xl border-glow-card">
+                        <div class="w-11 h-11 rounded-lg bg-neon-cyan/10 text-neon-cyan flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-white mb-3">Hardware & Embedded</h3>
+                        <ul class="space-y-2 text-xs font-mono text-slate-300">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-neon-cyan"></i> ESP32 & Arduino</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-neon-cyan"></i> 8051 Microcontroller</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-neon-cyan"></i> Sensors Interfacing</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-neon-cyan"></i> Digital Systems Design</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-neon-cyan"></i> VLSI Design Fundamentals</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-neon-cyan"></i> Analog Electronics</li>
+                        </ul>
+                    </div>
+
+                    <!-- Skills Group 2: Languages & HDL -->
+                    <div class="bg-dark-850 p-6 rounded-xl border-glow-card">
+                        <div class="w-11 h-11 rounded-lg bg-neon-green/10 text-neon-green flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-white mb-3">Languages & HDL</h3>
+                        <ul class="space-y-2 text-xs font-mono text-slate-300">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-neon-green"></i> Embedded C & C++</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-neon-green"></i> Java</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-neon-green"></i> Verilog HDL</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-neon-green"></i> Assembly Language (ALP)</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-neon-green"></i> HTML, CSS, JavaScript</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-neon-green"></i> SQL</li>
+                        </ul>
+                    </div>
+
+                    <!-- Skills Group 3: IT & Software Stack -->
+                    <div class="bg-dark-850 p-6 rounded-xl border-glow-card">
+                        <div class="w-11 h-11 rounded-lg bg-purple-500/10 text-neon-purple flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-white mb-3">Computer Science Fundamentals</h3>
+                        <ul class="space-y-2 text-xs font-mono text-slate-300">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-neon-purple"></i> Data Structures & Algorithms</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-neon-purple"></i> Object-Oriented Programming (OOP)</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-neon-purple"></i> Computer Networking & Protocols</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-neon-purple"></i> DBMS (MySQL)</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-neon-purple"></i> Firebase</li>
+                        </ul>
+                    </div>
+
+                    <!-- Skills Group 4: Tools & EDA Simulation -->
+                    <div class="bg-dark-850 p-6 rounded-xl border-glow-card">
+                        <div class="w-11 h-11 rounded-lg bg-sky-500/10 text-sky-400 flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-gears"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-white mb-3">Tools & EDA Simulation</h3>
+                        <ul class="space-y-2 text-xs font-mono text-slate-300">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-sky-400"></i> Keil µVision</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-sky-400"></i> ModelSim</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-sky-400"></i> Cadence Virtuoso</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-sky-400"></i> VS Code</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right text-sky-400"></i> Git & GitHub</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURED PROJECTS SECTION -->
+        <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-dark-700/60 bg-dark-950/40">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex items-center gap-4 mb-12">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
+                        <span class="text-neon-cyan font-mono text-xl"></span> Featured Projects
+                    </h2>
+                    <div class="h-[1px] bg-dark-700 flex-grow max-w-xs"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Project 1: Smart Aqua -->
+                    <div class="bg-dark-850 rounded-xl border-glow-card p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-lg bg-neon-cyan/10 text-neon-cyan flex items-center justify-center text-lg">
+                                    <i class="fa-solid fa-droplet"></i>
+                                </div>
+                                <span class="px-2.5 py-1 rounded bg-neon-cyan/10 text-neon-cyan text-xs font-mono border border-neon-cyan/30">IoT & Hardware</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Smart Aqua IoT Water Monitoring System</h3>
+                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+                                Developed an ESP32-based IoT system monitoring water level, TDS, turbidity, and flow rate in real time. Integrated Firebase with a web-based dashboard for live graphical data visualization, LCD display status, and buzzer alert triggers.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                <span class="px-2 py-0.5 rounded bg-dark-900 text-slate-300 text-xs font-mono">ESP32</span>
+                                <span class="px-2 py-0.5 rounded bg-dark-900 text-slate-300 text-xs font-mono">Firebase</span>
+                                <span class="px-2 py-0.5 rounded bg-dark-900 text-slate-300 text-xs font-mono">Sensors</span>
+                                <span class="px-2 py-0.5 rounded bg-dark-900 text-slate-300 text-xs font-mono">C++</span>
+                            </div>
+                            <button onclick="openProjectModal('aqua')" class="w-full py-2.5 rounded-lg bg-dark-800 hover:bg-dark-700 text-slate-200 text-xs font-mono transition-colors border border-dark-700 flex items-center justify-center gap-2">
+                                <span>Inspect Architecture</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Language Translational System -->
+                    <div class="bg-dark-850 rounded-xl border-glow-card p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-lg bg-neon-green/10 text-neon-green flex items-center justify-center text-lg">
+                                    <i class="fa-solid fa-language"></i>
+                                </div>
+                                <span class="px-2.5 py-1 rounded bg-neon-green/10 text-neon-green text-xs font-mono border border-neon-green/30">Embedded & Wireless</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">IoT Based Language Translational System</h3>
+                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+                                Built an ESP32-powered portable system capturing spoken audio input and transmitting voice packets over Wi-Fi to a translation processing server for real-time multilingual response processing.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                <span class="px-2 py-0.5 rounded bg-dark-900 text-slate-300 text-xs font-mono">ESP32</span>
+                                <span class="px-2 py-0.5 rounded bg-dark-900 text-slate-300 text-xs font-mono">Wi-Fi TCP/IP</span>
+                                <span class="px-2 py-0.5 rounded bg-dark-900 text-slate-300 text-xs font-mono">Audio DSP</span>
+                                <span class="px-2 py-0.5 rounded bg-dark-900 text-slate-300 text-xs font-mono">Embedded C</span>
+                            </div>
+                            <button onclick="openProjectModal('translate')" class="w-full py-2.5 rounded-lg bg-dark-800 hover:bg-dark-700 text-slate-200 text-xs font-mono transition-colors border border-dark-700 flex items-center justify-center gap-2">
+                                <span>Inspect Architecture</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Ticket Verse -->
+                    <div class="bg-dark-850 rounded-xl border-glow-card p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-neon-purple flex items-center justify-center text-lg">
+                                    <i class="fa-solid fa-ticket"></i>
+                                </div>
+                                <span class="px-2.5 py-1 rounded bg-purple-500/10 text-neon-purple text-xs font-mono border border-purple-500/30">Full-Stack IT</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Ticket Verse Online Ticket Booking System</h3>
+                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+                                Engineered a full-stack web application for browsing live events and reserving tickets. Features Node.js/Express REST APIs, responsive HTML/CSS/JS frontend, and PostgreSQL (Supabase) database for authentication and booking records.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                <span class="px-2 py-0.5 rounded bg-dark-900 text-slate-300 text-xs font-mono">Node.js</span>
+                                <span class="px-2 py-0.5 rounded bg-dark-900 text-slate-300 text-xs font-mono">Express</span>
+                                <span class="px-2 py-0.5 rounded bg-dark-900 text-slate-300 text-xs font-mono">PostgreSQL</span>
+                                <span class="px-2 py-0.5 rounded bg-dark-900 text-slate-300 text-xs font-mono">Supabase</span>
+                            </div>
+                            <button onclick="openProjectModal('ticketverse')" class="w-full py-2.5 rounded-lg bg-dark-800 hover:bg-dark-700 text-slate-200 text-xs font-mono transition-colors border border-dark-700 flex items-center justify-center gap-2">
+                                <span>Inspect Architecture</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE & INTERNSHIPS SECTION -->
+        <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-dark-700/60">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex items-center gap-4 mb-12">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
+                        <span class="text-neon-cyan font-mono text-xl"></span> Internships & Practical Experience
+                    </h2>
+                    <div class="h-[1px] bg-dark-700 flex-grow max-w-xs"></div>
+                </div>
+
+                <div class="space-y-8 relative before:absolute before:inset-0 before:left-4 sm:before:left-1/2 before:w-0.5 before:-ml-px before:bg-dark-700">
+                    <!-- Internship 1: Maven Silicon -->
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-8 h-8 rounded-full bg-dark-950 border-2 border-neon-cyan text-neon-cyan shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                            <i class="fa-solid fa-microchip text-xs"></i>
+                        </div>
+                        <div class="w-[calc(100%-2.5rem)] md:w-[calc(50%-2.5rem)] bg-dark-850 p-6 rounded-xl border-glow-card">
+                            <div class="flex items-center justify-between space-x-2 mb-1">
+                                <h3 class="font-bold text-white text-base sm:text-lg">Embedded System Design Intern</h3>
+                                <span class="text-xs font-mono text-neon-cyan bg-neon-cyan/10 px-2.5 py-0.5 rounded border border-neon-cyan/20">Maven Silicon</span>
+                            </div>
+                            <p class="text-xs font-mono text-slate-400 mb-4">May - July 2026 • Certificate Received</p>
+                            <ul class="space-y-2 text-slate-300 text-xs sm:text-sm">
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-check text-neon-cyan mt-1 text-xs"></i>
+                                    <span>Developed an embedded obstacle detection system by interfacing specialized sensors with microcontrollers.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-check text-neon-cyan mt-1 text-xs"></i>
+                                    <span>Wrote low-level Embedded C code for sensor data acquisition, signal processing, and real-time response generation.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-check text-neon-cyan mt-1 text-xs"></i>
+                                    <span>Executed system-level testing, hardware debugging, and logic optimization for fast response times.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Internship 2: Imarticus Learning -->
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-8 h-8 rounded-full bg-dark-950 border-2 border-neon-green text-neon-green shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                            <i class="fa-solid fa-laptop-code text-xs"></i>
+                        </div>
+                        <div class="w-[calc(100%-2.5rem)] md:w-[calc(50%-2.5rem)] bg-dark-850 p-6 rounded-xl border-glow-card">
+                            <div class="flex items-center justify-between space-x-2 mb-1">
+                                <h3 class="font-bold text-white text-base sm:text-lg">Full Stack Development Intern</h3>
+                                <span class="text-xs font-mono text-neon-green bg-neon-green/10 px-2.5 py-0.5 rounded border border-neon-green/20">Imarticus Learning</span>
+                            </div>
+                            <p class="text-xs font-mono text-slate-400 mb-4">May - June 2025 • Certificate Received</p>
+                            <ul class="space-y-2 text-slate-300 text-xs sm:text-sm">
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-check text-neon-green mt-1 text-xs"></i>
+                                    <span>Developed responsive web applications integrating modern front-end design and back-end REST API services.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-check text-neon-green mt-1 text-xs"></i>
+                                    <span>Gained hands-on proficiency in database management, API endpoints creation, and software debugging workflows.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-check text-neon-green mt-1 text-xs"></i>
+                                    <span>Collaborated on practical software modules following agile problem-solving methods.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACHIEVEMENTS & EDUCATION SECTION -->
+        <section id="achievements" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-dark-700/60 bg-dark-950/40">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex items-center gap-4 mb-12">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
+                        <span class="text-neon-cyan font-mono text-xl"></span> Achievements & Education
+                    </h2>
+                    <div class="h-[1px] bg-dark-700 flex-grow max-w-xs"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Achievements Panel -->
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                            <i class="fa-solid fa-trophy text-amber-400"></i> Key Achievements
+                        </h3>
+
+                        <!-- Achievement Card 1 -->
+                        <div class="bg-dark-850 p-5 rounded-xl border border-dark-700 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-amber-400/10 text-amber-400 flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">VIT STARS Scheme 100% Scholarship</h4>
+                                <p class="text-slate-400 text-xs mt-1">Awarded full 100% scholarship under the Support the Advancement of Rural Students (STARS) scheme to pursue B.Tech at VIT Vellore.</p>
+                            </div>
+                        </div>
+
+                        <!-- Achievement Card 2 -->
+                        <div class="bg-dark-850 p-5 rounded-xl border border-dark-700 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-neon-cyan/10 text-neon-cyan flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-award"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">District Top Ranker (12th Grade)</h4>
+                                <p class="text-slate-400 text-xs mt-1">Secured 1st Rank in Thoothukudi District among government school students in the 12th HSC State Board examination (Scored 92%).</p>
+                            </div>
+                        </div>
+
+                        <!-- Achievement Card 3 -->
+                        <div class="bg-dark-850 p-5 rounded-xl border border-dark-700 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-neon-green/10 text-neon-green flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-code-compare"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">VIT Top Coder Examination Qualified</h4>
+                                <p class="text-slate-400 text-xs mt-1">Qualified for the prestigious competitive coding examination conducted by Vellore Institute of Technology (VIT).</p>
+                            </div>
+                        </div>
+
+                        <!-- Achievement Card 4 -->
+                        <div class="bg-dark-850 p-5 rounded-xl border border-dark-700 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-neon-purple flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-brain"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">400+ LeetCode Solved</h4>
+                                <p class="text-slate-400 text-xs mt-1">Solved 400+ algorithmic problems across Data Structures, Algorithms, and Dynamic Programming on LeetCode.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Education Detail Card -->
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                            <i class="fa-solid fa-graduation-cap text-neon-cyan"></i> Education Background
+                        </h3>
+
+                        <div class="bg-dark-850 p-6 rounded-xl border border-dark-700 space-y-6">
+                            <!-- B.Tech -->
+                            <div class="border-b border-dark-700 pb-5">
+                                <div class="flex items-center justify-between mb-1">
+                                    <h4 class="font-bold text-white text-base">Vellore Institute of Technology, Vellore</h4>
+                                    <span class="text-xs font-mono text-neon-cyan">2023 - Present</span>
+                                </div>
+                                <p class="text-xs font-mono text-slate-400 mb-2">B.Tech in Electronics & Communication Engineering</p>
+                                <div class="flex items-center gap-3 font-mono text-xs text-slate-300">
+                                    <span class="px-2.5 py-1 rounded bg-dark-900 border border-dark-700 text-neon-green font-bold">CGPA: 8.59 / 10</span>
+                                </div>
+                            </div>
+
+                            <!-- HSC -->
+                            <div>
+                                <div class="flex items-center justify-between mb-1">
+                                    <h4 class="font-bold text-white text-base">Corporation Higher Secondary School</h4>
+                                    <span class="text-xs font-mono text-slate-400">Completed May 2023</span>
+                                </div>
+                                <p class="text-xs font-mono text-slate-400 mb-2">HSC (12th State Board of Tamil Nadu) • Samuelpuram</p>
+                                <div class="flex items-center gap-3 font-mono text-xs text-slate-300">
+                                    <span class="px-2.5 py-1 rounded bg-dark-900 border border-dark-700 text-amber-400 font-bold">Scored: 92%</span>
+                                    <span>District Rank </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-dark-700/60">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">
+                        <span class="text-neon-cyan font-mono text-xl"></span> Get In Touch
+                    </h2>
+                    <p class="text-slate-400 text-sm">
+                        Interested in discussing hardware design, embedded systems engineering, or software development opportunities? Feel free to reach out directly!
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <!-- Contact Cards -->
+                    <div class="lg:col-span-5 space-y-4">
+                        <div class="bg-dark-850 p-5 rounded-xl border border-dark-700 flex items-center gap-4">
+                            <div class="w-11 h-11 rounded-lg bg-neon-cyan/10 text-neon-cyan flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs font-mono text-slate-400 uppercase">Email Address</span>
+                                <a href="mailto:anumandhattn69@gmail.com" class="block text-sm font-semibold text-white hover:text-neon-cyan transition-colors">anumandhattn69@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="bg-dark-850 p-5 rounded-xl border border-dark-700 flex items-center gap-4">
+                            <div class="w-11 h-11 rounded-lg bg-neon-green/10 text-neon-green flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs font-mono text-slate-400 uppercase">Phone Number</span>
+                                <a href="tel:+919489892546" class="block text-sm font-semibold text-white hover:text-neon-green transition-colors">+91 9489892546</a>
+                            </div>
+                        </div>
+
+                        <div class="bg-dark-850 p-5 rounded-xl border border-dark-700 flex items-center gap-4">
+                            <div class="w-11 h-11 rounded-lg bg-purple-500/10 text-neon-purple flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs font-mono text-slate-400 uppercase">Location</span>
+                                <p class="text-sm font-semibold text-white">Thoothukudi District, Tamil Nadu - 628002</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="lg:col-span-7 bg-dark-850 p-6 sm:p-8 rounded-xl border border-dark-700 border-glow-card">
+                        <form id="contact-form" onsubmit="submitForm(event)" class="space-y-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-xs font-mono text-slate-300 mb-2">YOUR NAME *</label>
+                                    <input type="text" required placeholder="John Doe" class="w-full bg-dark-900 border border-dark-700 rounded-lg px-4 py-2.5 text-slate-200 text-sm focus:outline-none focus:border-neon-cyan transition-colors">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-mono text-slate-300 mb-2">YOUR EMAIL *</label>
+                                    <input type="email" required placeholder="john@example.com" class="w-full bg-dark-900 border border-dark-700 rounded-lg px-4 py-2.5 text-slate-200 text-sm focus:outline-none focus:border-neon-cyan transition-colors">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono text-slate-300 mb-2">SUBJECT *</label>
+                                <input type="text" required placeholder="Embedded / Software Role Inquiry" class="w-full bg-dark-900 border border-dark-700 rounded-lg px-4 py-2.5 text-slate-200 text-sm focus:outline-none focus:border-neon-cyan transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono text-slate-300 mb-2">MESSAGE *</label>
+                                <textarea rows="4" required placeholder="Hello Anumandh, I would like to discuss..." class="w-full bg-dark-900 border border-dark-700 rounded-lg px-4 py-2.5 text-slate-200 text-sm focus:outline-none focus:border-neon-cyan transition-colors resize-none"></textarea>
+                            </div>
+                            <button type="submit" class="w-full sm:w-auto px-7 py-3 rounded-lg bg-gradient-to-r from-neon-cyan to-cyan-400 text-dark-950 font-bold text-sm hover:shadow-[0_0_15px_rgba(0,243,255,0.4)] transition-all duration-300 flex items-center justify-center gap-2">
+                                <span>Send Message</span>
+                                <i class="fa-solid fa-paper-plane text-xs"></i>
+                            </button>
+                        </form>
+
+                        <div id="form-alert" class="hidden mt-4 p-4 rounded-lg bg-neon-cyan/10 border border-neon-cyan/40 text-neon-cyan text-xs font-mono text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-circle-check text-sm"></i>
+                            <span>Thank you Anumandh received your message! He will respond shortly.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark-950 border-t border-dark-700/60 py-8 px-4 sm:px-6 lg:px-8 text-center text-xs font-mono text-slate-500">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                Designed & Built for <span class="text-slate-300">Anumandh</span>
+            </div>
+            <div class="flex items-center space-x-5 text-slate-400">
+                <a href="https://github.com/anumandh05" target="_blank" rel="noopener noreferrer" class="hover:text-neon-cyan transition-colors">GitHub</a>
+                <a href="https://www.linkedin.com/in/anumandh/" target="_blank" rel="noopener noreferrer" class="hover:text-neon-cyan transition-colors">LinkedIn</a>
+                <a href="https://leetcode.com/anumandh05" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors">LeetCode</a>
+                <a href="mailto:anumandhattn69@gmail.com" class="hover:text-neon-cyan transition-colors">Email</a>
+            </div>
+            <div>
+                &copy; <span id="copyright-year"></span> All Rights Reserved
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE PROJECT DETAIL MODAL -->
+    <div id="modal-backdrop" class="fixed inset-0 z-50 hidden bg-dark-950/85 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-dark-900 border border-dark-700 rounded-2xl max-w-2xl w-full p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto glow-cyan">
+            <button onclick="closeProjectModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <div id="modal-body">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT HANDLERS -->
+    <script>
+        // Set year dynamically
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+        // Mobile Menu toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        }
+        document.getElementById('mobile-menu-btn').addEventListener('click', toggleMenu);
+
+        // Project Modal Contents
+        const projectDetails = {
+            aqua: {
+                title: "Smart Aqua IoT Based Water Monitoring System",
+                domain: "Embedded Systems & IoT Hardware",
+                summary: "Developed an ESP32-based IoT system to monitor water level, TDS, turbidity, and flow rate in real time. Features Firebase cloud integration, real-time web graphical visualization, LCD status display, and automated alert buzzer.",
+                tech: ["ESP32", "Embedded C++", "Firebase Realtime DB", "Water Sensors (TDS, Turbidity)", "LCD & Buzzer Module"],
+                keypoints: [
+                    "Interfaced multiple analog and digital sensors with ESP32 microcontroller ADC pins.",
+                    "Configured Wi-Fi telemetry to stream real-time sensor metrics directly into Firebase.",
+                    "Designed automated buzzer and LCD alert rules whenever water quality parameters breach safety standards."
+                ]
+            },
+            translate: {
+                title: "IoT Based Language Translational System",
+                domain: "Embedded Speech Telemetry",
+                summary: "Developed an ESP32-based portable hardware system for capturing spoken audio input and transmitting voice packets over Wi-Fi connection to a cloud-hosted translation server in real time.",
+                tech: ["ESP32", "Wi-Fi TCP/IP", "Embedded C", "Audio Microphones", "Translation API"],
+                keypoints: [
+                    "Programmed ESP32 microcontrollers for efficient audio sampling and low-cost hardware packaging.",
+                    "Implemented Wi-Fi socket communication to stream speech buffers directly to cloud translation services.",
+                    "Integrated hardware and software components to deliver a lightweight, portable language assistance device."
+                ]
+            },
+            ticketverse: {
+                title: "Ticket Verse Online Ticket Booking System",
+                domain: "Full-Stack IT Web Application",
+                summary: "Ticket Verse is a full-stack online portal allowing users to browse events and purchase tickets with dynamic database integration and API authentication.",
+                tech: ["Node.js", "Express.js", "PostgreSQL", "Supabase", "HTML5", "CSS3", "JavaScript"],
+                keypoints: [
+                    "Designed user-friendly responsive user interface for seamless event selection.",
+                    "Developed REST APIs in Node.js/Express for user registration, login authentication, and ticket purchase workflow.",
+                    "Integrated PostgreSQL database with Supabase to manage user profiles, seating states, and transaction records."
+                ]
+            }
+        };
+
+        function openProjectModal(key) {
+            const item = projectDetails[key];
+            if (!item) return;
+
+            const modalBody = document.getElementById('modal-body');
+            modalBody.innerHTML = `
+                <span class="text-xs font-mono text-neon-cyan uppercase tracking-wider">${item.domain}</span>
+                <h3 class="text-2xl font-bold text-white mt-1 mb-4">${item.title}</h3>
+                <p class="text-slate-300 text-sm leading-relaxed mb-6">${item.summary}</p>
+                
+                <h4 class="text-xs font-mono text-slate-400 mb-3 uppercase">Implementation Highlights:</h4>
+                <ul class="space-y-2 text-xs sm:text-sm text-slate-300 mb-6">
+                    ${item.keypoints.map(pt => `<li class="flex items-start gap-2"><i class="fa-solid fa-angle-right text-neon-cyan mt-1 text-xs"></i><span>${pt}</span></li>`).join('')}
+                </ul>
+
+                <div class="pt-4 border-t border-dark-700">
+                    <h4 class="text-xs font-mono text-slate-400 mb-3 uppercase">Tech Stack & Tools Used:</h4>
+                    <div class="flex flex-wrap gap-2">
+                        ${item.tech.map(t => `<span class="px-2.5 py-1 rounded bg-dark-800 text-neon-green font-mono text-xs border border-dark-700">${t}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('modal-backdrop').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProjectModal() {
+            document.getElementById('modal-backdrop').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('modal-backdrop').addEventListener('click', function(e) {
+            if (e.target === this) closeProjectModal();
+        });
+
+        // Contact Form Submission Handler
+        function submitForm(e) {
+            e.preventDefault();
+            const alertBox = document.getElementById('form-alert');
+            const form = document.getElementById('contact-form');
+            alertBox.classList.remove('hidden');
+            form.reset();
+
+            setTimeout(() => {
+                alertBox.classList.add('hidden');
+            }, 6000);
+        }
+    </script>
+</body>
+</html>
