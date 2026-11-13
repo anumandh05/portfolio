@@ -85,6 +85,22 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #00f3ff;
         }
+        /* Default hidden state (resets quickly when off-screen) */
+        .reveal-section {
+            opacity: 0;
+            transform: translateY(45px);
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+            will-change: opacity, transform;
+        }
+
+        /* Visible state (applies your slower duration & delay when entering) */
+        .reveal-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, 
+                        transform 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+        }
+
     </style>
 </head>
 <body class="bg-dark-900 text-slate-100 font-sans antialiased selection:bg-neon-cyan selection:text-dark-950 bg-circuit-pattern min-h-screen flex flex-col justify-between">
@@ -932,6 +948,34 @@
                 alertBox.classList.add('hidden');
             }, 6000);
         }
+        // Scroll Reveal Animation for Sections
+        document.addEventListener("DOMContentLoaded", () => {
+            // Select all sections inside <main> except the first Hero section
+            const sections = document.querySelectorAll("main section:not(:first-of-type)");
+
+            const observerOptions = {
+                root: null,
+                rootMargin: "0px 0px -60px 0px",
+                threshold: 0.1
+            };
+
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Section enters view (scrolling down OR up) -> Swipe up
+                        entry.target.classList.add("is-visible");
+                    } else {
+                        // Section leaves view -> Reset so it can swipe up again next time
+                        entry.target.classList.remove("is-visible");
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                section.classList.add("reveal-section");
+                sectionObserver.observe(section);
+            });
+        });
     </script>
 </body>
 </html>
